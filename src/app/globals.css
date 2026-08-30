@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #08090b;
+  --bg-panel: #0d0f13;
+  --bg-elevated: #15181f;
+  --bg-elevated-hover: #1b1f28;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text: #eef0f3;
+  --text-muted: #9aa1ad;
+  --text-faint: #5a6070;
+
+  --gold: #f2b705;
+  --gold-soft: rgba(242, 183, 5, 0.14);
+  --gold-strong: #ffd23f;
+
+  --bull: #26a69a;
+  --bull-soft: rgba(38, 166, 154, 0.16);
+  --bear: #ef5350;
+  --bear-soft: rgba(239, 83, 80, 0.16);
+
+  --score-solved: #22c55e;
+  --score-solved-soft: rgba(34, 197, 94, 0.14);
+  --score-close: #f2b705;
+  --score-close-soft: rgba(242, 183, 5, 0.14);
+  --score-low: #ef5350;
+  --score-low-soft: rgba(239, 83, 80, 0.14);
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-elevated: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 64px rgba(0, 0, 0, 0.55);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--bg-panel);
+  --color-elevated: var(--bg-elevated);
+  --color-elevated-hover: var(--bg-elevated-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-strong: var(--gold-strong);
+
+  --color-bull: var(--bull);
+  --color-bull-soft: var(--bull-soft);
+  --color-bear: var(--bear);
+  --color-bear-soft: var(--bear-soft);
+
+  --color-score-solved: var(--score-solved);
+  --color-score-solved-soft: var(--score-solved-soft);
+  --color-score-close: var(--score-close);
+  --color-score-close-soft: var(--score-close-soft);
+  --color-score-low: var(--score-low);
+  --color-score-low-soft: var(--score-low-soft);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  background-image:
+    radial-gradient(circle at 12% -10%, rgba(242, 183, 5, 0.07), transparent 42%),
+    radial-gradient(circle at 88% 0%, rgba(38, 166, 154, 0.06), transparent 40%);
+  background-attachment: fixed;
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background: var(--gold-soft);
+  color: var(--gold-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+@keyframes coindle-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes coindle-pop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes coindle-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--gold-soft);
+  }
+  100% {
+    box-shadow: 0 0 0 8px rgba(242, 183, 5, 0);
+  }
+}
+
+@keyframes coindle-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes coindle-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.coindle-fade-in {
+  animation: coindle-fade-in 0.28s ease-out both;
+}
+
+.coindle-pop {
+  animation: coindle-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.coindle-sheet-in {
+  animation: coindle-sheet-in 0.32s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+.coindle-backdrop-in {
+  animation: coindle-backdrop-in 0.2s ease-out both;
+}
+
+.coindle-safe-bottom {
+  padding-bottom: calc(var(--safe-bottom));
+}
+
+.coindle-scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.coindle-scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.coindle-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.coindle-range {
+  height: 4px;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 999px;
+  background: var(--bg-elevated-hover);
+}
+
+.coindle-range::-webkit-slider-thumb {
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 999px;
+  background: currentColor;
+  border: 2px solid var(--bg-panel);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.coindle-range::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 999px;
+  background: currentColor;
+  border: 2px solid var(--bg-panel);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.coindle-range::-moz-range-track {
+  background: transparent;
+}
+
+.coindle-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Hide number input spinners — presets and the slider handle stepping. */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
