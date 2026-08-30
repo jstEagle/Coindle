@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "title": "Coindle",
+  "description": "A Wordle-inspired guessing game for Pump.fun tokens.",
+  "tags": ["Game", "Pump.fun", "Cryptocurrency"],
+  "featured": false,
+  "links": {
+    "repo": "https://github.com/jstEagle/Coindle"
+  }
+}
