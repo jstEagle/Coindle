@@ -1,8 +1,14 @@
 {
   "schemaVersion": 1,
   "title": "Coindle",
-  "description": "A Wordle-inspired guessing game for Pump.fun tokens.",
-  "tags": ["Game", "Pump.fun", "Cryptocurrency"],
+  "description": "A daily historical crypto trading challenge with a hidden market, candlestick charts, three trading rounds, and a final coin reveal.",
+  "tags": [
+    "Next.js",
+    "TypeScript",
+    "Game",
+    "Cryptocurrency",
+    "Charts"
+  ],
   "featured": false,
   "links": {
     "repo": "https://github.com/jstEagle/Coindle"
